@@ -60,12 +60,10 @@ function Board({ nrows = 3, ncols = 3, chanceLightStartsOn = 0.5 }) {
 			const [y, x] = coord.split("-").map(Number);
 			const flipCell = (y, x, boardCopy) => {
 				// if this coord is actually on board, flip it
-
 				if (x >= 0 && x < ncols && y >= 0 && y < nrows) {
 					boardCopy[y][x] = !boardCopy[y][x];
 				}
 			};
-
 			// TODO: Make a (deep) copy of the oldBoard
 			const boardCopy = [...oldBoard];
 			// TODO: in the copy, flip this cell and the cells around it
@@ -85,7 +83,7 @@ function Board({ nrows = 3, ncols = 3, chanceLightStartsOn = 0.5 }) {
 
 	const renderBoard = () => {
 		return (
-			<table>
+			<table className="Board-table">
 				{board.map((row, rowIdx) => (
 					<tr>
 						{row.map((cell, cellIdx) => (
@@ -93,6 +91,7 @@ function Board({ nrows = 3, ncols = 3, chanceLightStartsOn = 0.5 }) {
 								flipCellsAroundMe={flipCellsAround}
 								coord={`${rowIdx}-${cellIdx}`}
 								isLit={cell}
+								nrows={nrows}
 							/>
 						))}
 					</tr>
@@ -101,18 +100,15 @@ function Board({ nrows = 3, ncols = 3, chanceLightStartsOn = 0.5 }) {
 		);
 	};
 
-	// if the game is won, just show a winning msg & render nothing else
-
-	// TODO
-
-	// make table board
 	return (
-		<div>
-			{hasWon() && <p>YOU WON!</p>}
+		<div className="Board">
+			<button onClick={() => setBoard(createBoard())} class="Board-reset-btn">
+				Reset
+			</button>
+			{hasWon() && <p className="Board-win">YOU WON!</p>}
 			{!hasWon() && renderBoard()}
 		</div>
 	);
-	// TODO
 }
 
 export default Board;
