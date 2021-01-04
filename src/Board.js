@@ -81,7 +81,7 @@ function Board({ nrows = 3, ncols = 3, chanceLightStartsOn = 0.5 }) {
 		flipCell(y - 1, x, boardCopy);
 	}
 
-	const renderBoard = () => {
+	function renderBoard() {
 		return (
 			<table className="Board-table">
 				{board.map((row, rowIdx) => (
@@ -98,7 +98,7 @@ function Board({ nrows = 3, ncols = 3, chanceLightStartsOn = 0.5 }) {
 				))}
 			</table>
 		);
-	};
+	}
 
 	return (
 		<div className="Board">
