@@ -15,9 +15,9 @@
 .Board-win {
 	position: absolute;
 	left: 50%;
-	top: 10%;
+	top: 40%;
 	transform: translateX(-50%);
-	color: green;
+	color: rgb(1, 182, 1);
 	font-size: 50px;
 }
 
